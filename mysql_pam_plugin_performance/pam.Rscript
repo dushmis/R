@@ -1,0 +1,5 @@
+a<-read.csv("pam.dushyant.csv")
+pdf(file="pam.pdf" , width=14, height=7)
+plot(c(a$new,a$old),type='n')
+lines(a$old,type='l',col='blue')
+lines(a$new,type='l',col='red')

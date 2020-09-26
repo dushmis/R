@@ -1,0 +1,7 @@
+a2<-read.csv("15feb.new.csv")
+time<-seq(from=min(a2),to= max(a2),length.out=100)
+pdf(file="all.pdf" , width=14, height=7)
+plot(time,type='n',ylab="time in seconds",xlab="# of requests")
+lines(a2$new,col='green');
+lines(a2$old,col='blue');
+dev.off()

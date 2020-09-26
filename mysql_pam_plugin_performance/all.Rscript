@@ -1,0 +1,12 @@
+a2<-read.csv("15feb.new.csv")
+a<-read.csv("pam.dushyant.csv")
+k<-data.frame(timestamp=a$new,mysql=a$old,pam_withouttime=a2$new)
+time<-seq(from=min(c(k$timestamp,k$mysql,k$pam_withouttime)),to=max(c(k$timestamp,k$mysql,k$pam_withouttime)),length.out=100)
+pdf(file="all.pdf" , width=14, height=7)
+plot(time,type='n',ylab="time in seconds",xlab="# of requests")
+lines(k$mysql,col='green');
+lines(k$pam_withouttime,col='blue');
+lines(k$timestamp,col='red');
+legend(0, 3.0, legend=c("user with pam_dushyant", "user","mysql(user)"),
+       col=c("red", "blue","green"), lty=1, cex=0.8,
+       title="Line types", text.font=1, bg='lightblue')
